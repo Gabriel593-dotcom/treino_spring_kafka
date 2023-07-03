@@ -15,13 +15,7 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 public class KafkaAdminConfig {
     public final KafkaProperties properties;
-
-    public KafkaAdmin kafkaAdmin() {
-        var configs = new HashMap<String, Object>();
-        configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, properties.getBootstrapServers());
-        return new KafkaAdmin(configs);
-    }
-
+    
     @Bean
     public KafkaAdmin.NewTopics topics() {
         return new KafkaAdmin.NewTopics(
