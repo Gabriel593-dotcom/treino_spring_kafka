@@ -1,8 +1,5 @@
 package com.treino_kafka.producer.kafkaconfig;
 
-import java.util.HashMap;
-
-import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +13,13 @@ import lombok.RequiredArgsConstructor;
 public class KafkaAdminConfig {
     public final KafkaProperties properties;
     
+/*     public KafkaAdmin kafkaAdmin() {
+        var config = new HashMap<String, Object>();
+        config.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, properties.getBootstrapServers());
+        return new KafkaAdmin(config);
+    }
+ */
+
     @Bean
     public KafkaAdmin.NewTopics topics() {
         return new KafkaAdmin.NewTopics(
